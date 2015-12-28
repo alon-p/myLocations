@@ -1,0 +1,31 @@
+<ion-view view-title="My Locations">
+  <ion-nav-buttons side="primary">
+    <button class="button ion-plus-round"
+            ui-sref="main.newLocaion"
+            title="Add location">
+    </button>
+    <button class="button"
+            ng-class="(enableGroup?'ion-ios-circle-filled':'ion-ios-circle-outline')"
+            ng-click="toggleEnableGroup()"
+            title="Toggle Group by category">
+    </button>
+  </ion-nav-buttons>
+
+  <!-- do you want padding? -->
+  <ion-content class="padding">
+
+    <!-- content goes here -->
+    <ion-list ng-repeat="(key, items) in list | groupBy: (enableGroup?'category':'')">
+      <ion-item ng-if="enableGroup" class="item item-divider">
+        Category: {{key}}
+      </ion-item>
+      <ion-item ng-click="go(loc.id)" ng-repeat="loc in items | orderBy: 'name' track by loc.id">
+        <h3>#{{loc.id}} - {{loc.name}}</h3>
+          <span class="item-note">
+          {{loc.category}}
+          </span>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

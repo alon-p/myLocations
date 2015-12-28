@@ -1,0 +1,62 @@
+<ion-view view-title="{{location.name}}">
+  <ion-nav-buttons side="primary">
+    <button class="button ion-trash-a"
+            ng-click="trash()"
+            title="Delete">
+    </button>
+    <button class="button ion-edit"
+            ng-click="edit()"
+            title="edit">
+    </button>
+  </ion-nav-buttons>
+
+  <!-- do you want padding? -->
+  <ion-content class="padding">
+
+    <!-- content goes here -->
+    <ion-list>
+      <ion-item class="item item-divider">
+        Name
+      </ion-item>
+      <ion-item class="item item-icon">
+        {{location.name}}
+      </ion-item>
+
+      <ion-item class="item item-divider">
+        Category
+      </ion-item>
+      <ion-item class="item item-icon">
+        {{location.category}}
+      </ion-item>
+
+      <ion-item class="item item-divider">
+        Address
+      </ion-item>
+      <ion-item class="item item-icon">
+        {{location.address}}
+      </ion-item>
+
+      <ion-item class="item item-divider">
+        Coordinates
+      </ion-item>
+      <ion-item class="item item-icon">
+        {{location.coordinates}}
+      </ion-item>
+
+      <ion-item class="item item-divider">
+        Map
+      </ion-item>
+      <ion-item class="item item-icon">
+        <ui-gmap-google-map
+          center='map.center'
+          zoom='map.zoom'>
+          <ui-gmap-marker ng-if="map.marker != null"
+                          coords="map.marker.coordinate"
+                          idkey="map.marker.id">
+          </ui-gmap-marker>
+        </ui-gmap-google-map>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
