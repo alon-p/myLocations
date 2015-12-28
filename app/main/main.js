@@ -6,7 +6,6 @@ angular.module('main', [
   'ui.router',
   'LocalStorageModule',
   'ngMessages',
-  //'ngTouch',
   'toastr',
   'uiGmapgoogle-maps',
   'angular.filter',
@@ -141,36 +140,6 @@ angular.module('main', [
         }
       }
     });
-
-
-
-      //.state('main.list', {
-      //  url: '/list',
-      //  views: {
-      //    'tab-list': {
-      //      templateUrl: 'main/templates/list.html',
-      //      // controller: 'SomeCtrl as ctrl'
-      //    }
-      //  }
-      //})
-      //.state('main.listDetail', {
-      //  url: '/list/detail',
-      //  views: {
-      //    'tab-list': {
-      //      templateUrl: 'main/templates/list-detail.html',
-      //      // controller: 'SomeCtrl as ctrl'
-      //    }
-      //  }
-      //})
-      //.state('main.debug', {
-      //  url: '/debug',
-      //  views: {
-      //    'tab-debug': {
-      //      templateUrl: 'main/templates/debug.html',
-      //      controller: 'DebugCtrl as ctrl'
-      //    }
-      //  }
-      //});
 })
   .run(function ($rootScope, $window, Locations, Categories, $cordovaSocialSharing, $ionicPlatform, Mailto) {
     $rootScope.share = function () {
