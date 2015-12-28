@@ -1,0 +1,103 @@
+<ion-view view-title="{{location.title}}">
+  <!-- do you want padding? -->
+  <ion-content class="padding">
+
+    <form name="location.LocationForm"
+          ng-submit="save(location.LocationForm.$valid)"
+          ng-model-options="{ debounce: 500 }"
+          novalidate>
+
+      <div class="list">
+        <label class="item item-input">
+          <input type="text"
+                 name="name"
+                 placeholder="Name"
+                 ng-model="location.name"
+                 required>
+        </label>
+        <div ng-messages="location.LocationForm.name.$error"
+             ng-if="location.LocationForm.name.$touched"
+             role="alert">
+          <div ng-message="required">Name is required</div>
+        </div>
+
+        <label class="item item-input"
+               ng-model="location.category"
+               modal-title="Select a category"
+               options="categories"
+               has-search="true"
+               modal-select
+               required>
+          <input type="text"
+                 name="category"
+                 placeholder="Category"
+                 ng-model="location.category"
+                 required/>
+          <div class="option">
+            {{option}}
+          </div>
+        </label>
+        <div ng-messages="location.LocationForm.category.$error"
+             ng-if="location.LocationForm.category.$touched"
+             role="alert">
+          <div ng-message="required">Category is required</div>
+        </div>
+
+        <label class="item item-input">
+          <input type="text"
+                 name="address"
+                 placeholder="Address"
+                 ng-model="location.address"
+                 ng-change="location.addressChange()"
+                 required>
+        </label>
+        <div ng-messages="location.LocationForm.address.$error"
+             ng-if="location.LocationForm.address.$touched"
+             role="alert">
+          <div ng-message="required">Address is required</div>
+        </div>
+
+        <label class="item item-input">
+          <input type="text"
+                 name="coordinates"
+                 placeholder="Coordinates"
+                 ng-model="location.coordinates"
+                 ng-change="location.coordinatesChange()"
+                 required>
+        </label>
+        <div ng-messages="location.LocationForm.coordinates.$error"
+             ng-if="location.LocationForm.coordinates.$touched"
+             role="alert">
+          <div ng-message="required">Coordinates is required</div>
+        </div>
+
+        <label class="item">
+          <div data-tap-disabled="true">
+          <ui-gmap-google-map
+            center='map.center'
+            zoom='map.zoom'
+            events="map.events">
+                <ui-gmap-marker ng-if="map.marker != null"
+                                coords="map.marker.coordinate"
+                                idkey="map.marker.id">
+              </ui-gmap-marker>
+            </ui-gmap-google-map>
+          </div>
+        </label>
+
+
+
+
+
+        <button class="button button-positive button-block"
+                type="submit"
+                ng-disabled="!location.LocationForm.$valid">
+          <i class="icon ion-plus-round"></i>&nbsp;
+          Submit
+        </button>
+      </div>
+
+    </form>
+
+  </ion-content>
+</ion-view>

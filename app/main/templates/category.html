@@ -1,0 +1,26 @@
+<ion-view view-title="Category Details">
+  <ion-nav-buttons side="primary">
+    <button class="button ion-trash-a"
+            ng-click="trash()"
+            title="Delete">
+    </button>
+    <button class="button ion-edit"
+            ng-click="edit()"
+            title="edit">
+    </button>
+  </ion-nav-buttons>
+  <!-- do you want padding? -->
+  <ion-content class="padding">
+
+    <!-- content goes here -->
+    <ion-list>
+      <ion-item class="item item-divider">
+        <h1>{{category.name}}</h1> locations list
+      </ion-item>
+      <ion-item class="item" ng-repeat="loc in locations track by loc.id" ng-click="go(loc.id)">
+        {{loc.name}}
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
